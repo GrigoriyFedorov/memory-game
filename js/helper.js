@@ -16,3 +16,28 @@ export const createElement = (
 
   return element;
 };
+
+export const shuffle = (array) => {
+  let currentIndex = array.length;
+
+  while (currentIndex) {
+    const randomIndex = Math.floor(Math.random() * currentIndex--);
+
+    [array[randomIndex], array[currentIndex]] = [
+      array[currentIndex],
+      array[randomIndex],
+    ];
+  }
+
+  return array;
+};
+
+export const createArr = () => {
+  const arr = [];
+  
+  for (let i = 0; i < 8; i++) {
+    arr.push(i, i)
+  }
+
+  return arr;
+};
