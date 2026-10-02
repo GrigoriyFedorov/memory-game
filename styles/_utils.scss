@@ -1,0 +1,11 @@
+@use "meta" as *;
+
+.container {
+  max-width: rem(720);
+  padding-inline: rem(20);
+  margin-inline: auto;
+
+  @include mobile {
+    padding-inline: rem(16);
+  }
+}

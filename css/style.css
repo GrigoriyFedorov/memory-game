@@ -111,11 +111,6 @@ html {
 
 body {
   /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-  min-height: 100%;
-  /**
     Унифицированный интерлиньяж
    */
   line-height: 1.5;
@@ -189,4 +184,131 @@ svg * {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+body {
+  font-size: clamp(0.625rem, 0.1838235294rem + 1.9607843137vw, 1.125rem);
+  font-family: "Roboto";
+  font-weight: 500;
+  background-color: #f0f8ff;
+}
+
+.container {
+  max-width: 45rem;
+  padding-inline: 1.25rem;
+  margin-inline: auto;
+}
+@media (max-width: 48rem) {
+  .container {
+    padding-inline: 1rem;
+  }
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Medium.woff2) format(woff2);
+  font-weight: 500;
+  font-style: normal;
+}
+.button {
+  min-height: 3.375rem;
+  padding-inline: 1.25rem;
+  background-color: transparent;
+  border: 2px solid #767aff;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+}
+@media (max-width: 48rem) {
+  .button {
+    min-height: 2.25rem;
+    padding-inline: 0.625rem;
+  }
+}
+@media (hover: hover) {
+  .button:hover {
+    background-color: #767aff;
+    color: #fff;
+  }
+}
+@media (hover: none) {
+  .button:active {
+    background-color: #767aff;
+    color: #fff;
+  }
+}
+
+.header__inner {
+  margin-block: 1.25rem 1.25rem;
+  padding: 1.25rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 48rem) {
+  .header__inner {
+    padding: 0.625rem;
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 0px rgba(34, 60, 80, 0.3);
+  padding: 0;
+}
+.card__front, .card__back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 4px solid #8099ff;
+  border-radius: inherit;
+  transition-duration: 0.2s;
+}
+.card__front {
+  display: none;
+  font-size: clamp(1.875rem, 0.2205882353rem + 7.3529411765vw, 3.75rem);
+  background-color: #fff;
+}
+.card__back {
+  background-color: #767aff;
+  position: relative;
+}
+.card__back-img {
+  width: 36%;
+  z-index: 10;
+}
+.card__back::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 60%;
+  aspect-ratio: 1;
+  background-color: #8099ff;
+  border-radius: 50%;
+}
+@media (hover: hover) {
+  .card__back:hover {
+    scale: 105%;
+  }
+}
+@media (hover: none) {
+  .card__back:active {
+    scale: 105%;
+  }
+}
+
+.board__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
 }/*# sourceMappingURL=style.css.map */

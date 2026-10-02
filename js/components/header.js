@@ -4,10 +4,10 @@ import { createElement } from "../helper.js";
 
 export const createHeader = () => {
   const header = createElement("header", {
-    classes: ["header"],
+    classes: ["header", "container"],
     children: [
       createElement("div", {
-        classes: ["header__inner", "container"],
+        classes: ["header__inner"],
         children: [
           createElement("button", {
             classes: ["button"],
@@ -20,13 +20,13 @@ export const createHeader = () => {
           createElement("div", {
             classes: ["header__steps"],
             children: [
+              'Ходов: ',
               createElement("span", {
                 text: "0",
                 attributes: {
                   "data-role": "step",
                 },
-              }),
-              'ходов'
+              })
             ],
           }),
           createElement("div", {
@@ -38,7 +38,7 @@ export const createHeader = () => {
                   "data-role": "pair",
                 },
               }),
-              "из 8 пар"
+              " из 8 пар"
             ],
           }),
           createElement("button", {

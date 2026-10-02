@@ -13,11 +13,20 @@ export const createCard = (cardIndex) => {
     },
     children: [
       createElement("div", {
-        classes: ["card__front"],
-        text: imgArr[cardIndex],
+        classes: ["card__back"],
+        children: [
+          createElement('img', {
+            classes: ['card__back-img'],
+            attributes: {
+              src: "../images/question.png",
+              alt: "",
+            }
+          })
+        ]
       }),
       createElement("div", {
-        classes: ["card__back"],
+        classes: ["card__front"],
+        text: imgArr[cardIndex],
       }),
     ],
   });
