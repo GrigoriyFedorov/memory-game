@@ -17,7 +17,7 @@ export const createCard = (cardIndex) => {
           createElement('img', {
             classes: ['card__back-img'],
             attributes: {
-              src: "../images/question.png",
+              src: "images/question.png",
               alt: "",
             }
           })
