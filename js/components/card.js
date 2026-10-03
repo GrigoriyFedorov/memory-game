@@ -8,8 +8,7 @@ export const createCard = (cardIndex) => {
     classes: ["card"],
     attributes: {
       type: "button",
-      "data-action": "choose",
-      "data-cardIndex": cardIndex,
+      "data-card-index": cardIndex,
     },
     children: [
       createElement("div", {
