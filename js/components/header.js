@@ -54,5 +54,19 @@ export const createHeader = () => {
     ],
   });
 
-  return header;
+  let stepSpan = header.querySelector('[data-role = "step"]')
+  let pairsSpan = header.querySelector('[data-role = "pair"]')
+
+  const updateSteps = (stepNumber) => {
+    stepSpan.textContent = stepNumber;
+  }
+  const updatePairs = (pairsNumber) => {
+    pairsSpan.textContent = pairsNumber;
+  }
+
+  return {
+    header,
+    updateSteps,
+    updatePairs,
+  };
 };

@@ -5,7 +5,7 @@ import { shuffle } from "../helper.js";
 import { createArr } from "../helper.js";
 import { createCard } from "./card.js";
 
-export const createBoard = () => {
+export const createBoard = (updateSteps, updatePairs) => {
   const randomIndexArr = shuffle(createArr());
 
   const cards = randomIndexArr.map((cardIndex) => {
@@ -23,26 +23,34 @@ export const createBoard = () => {
   });
 
   let cardsPair = [];
+  let steps = 0;
+  let guessedPairs = 0;
 
   const compareCards = () => {
     if (cardsPair[0].dataset.cardIndex === cardsPair[1].dataset.cardIndex) {
+      cardsPair.forEach((card) => {
+        card
+          .querySelector(".card__front")
+          .classList.add("card__front--guessed");
+      });
+      cardsPair = [];
+      steps++;
+      guessedPairs++;
+      updateSteps(steps);
+      updatePairs(guessedPairs);
+    } else {
+      board.classList.add("board--locked");
+      setTimeout(() => {
         cardsPair.forEach((card) => {
-          card
-            .querySelector(".card__front")
-            .classList.add("card__front--guessed");
+          card.classList.remove("card--open");
         });
+        board.classList.remove("board--locked");
         cardsPair = [];
-      } else {
-        board.classList.add('board--locked')
-        setTimeout(() => {
-          cardsPair.forEach((card) => {
-            card.classList.remove("card--open");
-          });
-          board.classList.remove('board--locked')
-          cardsPair = [];
-        }, 1000);
-      }
-  }
+      }, 1000);
+      steps++;
+      updateSteps(steps);
+    }
+  };
 
   board.addEventListener("click", (event) => {
     const card = event.target.closest(".card");
