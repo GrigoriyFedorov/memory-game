@@ -5,7 +5,7 @@ import { shuffle } from "../helper.js";
 import { createArr } from "../helper.js";
 import { createCard } from "./card.js";
 
-export const createBoard = (updateSteps, updatePairs) => {
+export const createBoard = (updateSteps, updatePairs, onWin) => {
   const randomIndexArr = shuffle(createArr());
 
   const cards = randomIndexArr.map((cardIndex) => {
