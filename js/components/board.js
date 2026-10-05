@@ -26,6 +26,24 @@ export const createBoard = (updateSteps, updatePairs, onWin) => {
   let steps = 0;
   let guessedPairs = 0;
 
+  const recordResult = (stepsCount) => {
+    const date = new Date().toLocaleDateString();
+    const result = {
+      stepsCount,
+      date,
+    };
+    
+    const topResults = localStorage.getItem("topResults");
+    const topResultsArray = JSON.parse(topResults) ?? [];
+
+    topResultsArray.push(result);
+    topResultsArray.sort((a, b) => a.stepsCount - b.stepsCount);
+    localStorage.setItem(
+      "topResults",
+      JSON.stringify(topResultsArray.slice(0, 10)),
+    );
+  };
+
   const compareCards = () => {
     if (cardsPair[0].dataset.cardIndex === cardsPair[1].dataset.cardIndex) {
       cardsPair.forEach((card) => {
@@ -38,6 +56,10 @@ export const createBoard = (updateSteps, updatePairs, onWin) => {
       guessedPairs++;
       updateSteps(steps);
       updatePairs(guessedPairs);
+      if (guessedPairs === 8) {
+        recordResult(steps);
+        onWin(steps);
+      }
     } else {
       board.classList.add("board--locked");
       setTimeout(() => {
