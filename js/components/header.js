@@ -2,7 +2,7 @@
 
 import { createElement } from "../helper.js";
 
-export const createHeader = (startNewGame) => {
+export const createHeader = (startNewGame, openLeaderboard) => {
   const newGameBtn = createElement("button", {
     classes: ["button"],
     text: "Новая игра",
@@ -12,9 +12,22 @@ export const createHeader = (startNewGame) => {
     },
   });
 
-  newGameBtn.addEventListener('click', () => {
+  newGameBtn.addEventListener("click", () => {
     startNewGame();
-  })
+  });
+
+  const leaderboardBtn = createElement("button", {
+    classes: ["button"],
+    text: "Таблица лидеров",
+    attributes: {
+      type: "button",
+      "data-action": "leaderboard",
+    },
+  });
+
+  leaderboardBtn.addEventListener("click", () => {
+    openLeaderboard();
+  });
 
   const header = createElement("header", {
     classes: ["header", "container"],
@@ -47,14 +60,7 @@ export const createHeader = (startNewGame) => {
               " из 8 пар",
             ],
           }),
-          createElement("button", {
-            classes: ["button"],
-            text: "Таблица лидеров",
-            attributes: {
-              type: "button",
-              "data-action": "leaderboard",
-            },
-          }),
+          leaderboardBtn,
         ],
       }),
     ],
