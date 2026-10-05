@@ -4,7 +4,7 @@ import { createElement } from "../helper.js";
 
 export const createVictoryContent = (stepsCount, startNewGame) => {
   const newGameBtn = createElement("button", {
-    classes: ["button"],
+    classes: ["victory-view__button", "button"],
     text: "Новая игра",
     attributes: {
       type: "button",

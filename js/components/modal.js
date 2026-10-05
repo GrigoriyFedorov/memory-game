@@ -29,6 +29,20 @@ export const createModal = () => {
     ],
   });
 
+  modal.addEventListener("click", (event) => {
+    const rect = modal.getBoundingClientRect();
+
+    const isClickOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (isClickOutside) {
+      modal.close();
+    }
+  });
+
   const openModal = (childNode) => {
     modalBody.replaceChildren(childNode);
     modal.showModal();

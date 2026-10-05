@@ -225,13 +225,15 @@ body {
 }
 @media (hover: hover) {
   .button:hover {
-    background-color: #767aff;
+    background-color: #8099ff;
+    border-color: #8099ff;
     color: #fff;
   }
 }
 @media (hover: none) {
   .button:active {
-    background-color: #767aff;
+    background-color: #8099ff;
+    border-color: #8099ff;
     color: #fff;
   }
 }
@@ -329,4 +331,103 @@ body {
 }
 .board--locked {
   pointer-events: none;
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.875rem;
+}
+.modal {
+  width: min(25rem, 90vw);
+  padding: 1.875rem;
+  border-radius: 20px;
+}
+.modal:has(.victory-view) {
+  border-color: #008000;
+  row-gap: 0.625rem;
+}
+.modal:has(.victory-view) .modal__close-btn {
+  color: #fff;
+}
+.modal__close-btn-wrapper {
+  width: 100%;
+}
+.modal__close-btn {
+  width: 100%;
+  border-radius: 20px;
+  background-color: #767aff;
+  border-color: #767aff;
+  font-size: 1.3em;
+}
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal__body {
+  width: 100%;
+}
+
+.leaderboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.625rem;
+}
+.leaderboard__table {
+  width: 90%;
+  text-align: center;
+  font-size: 1.1em;
+}
+.leaderboard__table thead tr,
+.leaderboard__table tbody tr:not(:last-child) {
+  border-bottom: 2px solid black;
+}
+.leaderboard__table th, .leaderboard__table td {
+  padding: 0.625rem;
+}
+@media (max-width: 48rem) {
+  .leaderboard__table th, .leaderboard__table td {
+    padding: 0.25rem;
+  }
+}
+.leaderboard__empty {
+  font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.victory-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.125rem;
+}
+.victory-view__title {
+  color: #008000;
+}
+.victory-view__text {
+  font-size: 1.2em;
+}
+.victory-view__button {
+  width: 100%;
+  background-color: #008000;
+  border-color: #008000;
+  border-radius: 20px;
+  font-size: 1.2em;
+  color: #fff;
+}
+@media (hover: hover) {
+  .victory-view__button:hover {
+    background-color: #00b800;
+    border-color: #00b800;
+    color: #fff;
+  }
+}
+@media (hover: none) {
+  .victory-view__button:active {
+    background-color: #00b800;
+    border-color: #00b800;
+    color: #fff;
+  }
 }/*# sourceMappingURL=style.css.map */
