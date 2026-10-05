@@ -2,31 +2,37 @@
 
 import { createElement } from "../helper.js";
 
-export const createHeader = () => {
+export const createHeader = (startNewGame) => {
+  const newGameBtn = createElement("button", {
+    classes: ["button"],
+    text: "Новая игра",
+    attributes: {
+      type: "button",
+      "data-action": "new-game",
+    },
+  });
+
+  newGameBtn.addEventListener('click', () => {
+    startNewGame();
+  })
+
   const header = createElement("header", {
     classes: ["header", "container"],
     children: [
       createElement("div", {
         classes: ["header__inner"],
         children: [
-          createElement("button", {
-            classes: ["button"],
-            text: "Новая игра",
-            attributes: {
-              type: "button",
-              "data-action": "new-game",
-            },
-          }),
+          newGameBtn,
           createElement("div", {
             classes: ["header__steps"],
             children: [
-              'Ходов: ',
+              "Ходов: ",
               createElement("span", {
                 text: "0",
                 attributes: {
                   "data-role": "step",
                 },
-              })
+              }),
             ],
           }),
           createElement("div", {
@@ -38,7 +44,7 @@ export const createHeader = () => {
                   "data-role": "pair",
                 },
               }),
-              " из 8 пар"
+              " из 8 пар",
             ],
           }),
           createElement("button", {
@@ -54,15 +60,15 @@ export const createHeader = () => {
     ],
   });
 
-  let stepSpan = header.querySelector('[data-role = "step"]')
-  let pairsSpan = header.querySelector('[data-role = "pair"]')
+  let stepSpan = header.querySelector('[data-role = "step"]');
+  let pairsSpan = header.querySelector('[data-role = "pair"]');
 
   const updateSteps = (stepNumber) => {
     stepSpan.textContent = stepNumber;
-  }
+  };
   const updatePairs = (pairsNumber) => {
     pairsSpan.textContent = pairsNumber;
-  }
+  };
 
   return {
     header,

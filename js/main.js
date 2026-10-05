@@ -6,12 +6,33 @@ import { createBoard } from "./components/board.js";
 import { createModal } from "./components/modal.js";
 import { createVictoryContent } from "./components/victoryContent.js";
 
-const { header, updateSteps, updatePairs } = createHeader();
 const main = createElement("main", { classes: ["main"] });
-const board = createBoard(updateSteps, updatePairs, (stepsCount) => {
-  openModal(createVictoryContent(stepsCount));
-});
 const { modal, openModal } = createModal();
 
+const startNewGame = () => {
+  modal.close();
+  updateSteps(0);
+  updatePairs(0);
+
+  const newBoard = createBoard(updateSteps, updatePairs, handleWin);
+
+  if (currentBoard) {
+    currentBoard.replaceWith(newBoard);
+  } else {
+    main.append(newBoard);
+  }
+
+  currentBoard = newBoard;
+};
+
+const { header, updateSteps, updatePairs } = createHeader(startNewGame);
+
+let currentBoard = null;
+
+
+const handleWin = (stepsCount) => {
+  openModal(createVictoryContent(stepsCount, startNewGame));
+};
+
 document.body.append(header, main, modal);
-main.append(board);
+startNewGame();
