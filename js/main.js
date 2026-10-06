@@ -41,3 +41,4 @@ const handleWin = (stepsCount) => {
 
 document.body.append(header, main, modal);
 startNewGame();
+openModal(createVictoryContent(2))
