@@ -1,0 +1,13 @@
+@use "../meta" as *;
+
+.board {
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: rem(10);
+  }
+
+  &--locked {
+    pointer-events: none;
+  }
+}

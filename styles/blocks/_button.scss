@@ -1,0 +1,21 @@
+@use "../meta" as *;
+
+.button {
+  min-height: rem(54);
+  padding-inline: rem(20);
+  background-color: transparent;
+  border: 2px solid #767aff;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+
+  @include mobile {
+    min-height: rem(36);
+    padding-inline: rem(10);
+  }
+
+  @include hover {
+    background-color: #8099ff;
+    border-color: #8099ff;
+    color: #fff;
+  }
+}

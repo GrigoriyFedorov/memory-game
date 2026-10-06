@@ -1,0 +1,8 @@
+@use "meta" as *;
+
+body {
+  @include fluid-text(18, 10);
+  font-family: "Roboto";
+  font-weight: 500;
+  background-color: #f0f8ff;
+}
